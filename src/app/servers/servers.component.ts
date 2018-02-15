@@ -11,6 +11,7 @@ export class ServersComponent implements OnInit {
   serverName = '';
   username = '';
   serverCreated = false;
+  serversArray = ['Rambo-2093', 'Rocky-R200', 'T-1000'];
 
   constructor() {
     setTimeout(() => {
@@ -24,10 +25,11 @@ export class ServersComponent implements OnInit {
   onCreateServer() {
     this.serverCreationStatus = `Server ${this.serverName} was created!`;
     this.serverCreated = true;
-    setTimeout(() => {
-      this.serverCreated = false;
-      this.serverName = '';
-    }, 1000);
+    this.serversArray.push(this.serverName);
+    // setTimeout(() => {
+    //   this.serverCreated = false;
+    //   this.serverName = '';
+    // }, 1000);
   }
 
   onUpdateServerName(event) {

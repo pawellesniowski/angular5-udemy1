@@ -1,1 +1,28 @@
-<p>Server ID: {{ id }} is {{ getServerStatus() }}</p>
+<div class="server-status">
+    
+    <p 
+        [ngStyle]="{'backgroundColor': getColor()}"
+        [ngClass]="{online: serverStatus === 'online'}"
+    >
+        Server ID: {{ id }} is {{ getServerStatus() }}
+        
+    </p>
+    <button 
+        class="btn btn-default"
+        (click)="onDisplayServerDetails()"
+    >
+        Display Details
+    </button>
+    <span *ngIf="displayServerDetails">
+        {{serverDetails}} 
+    </span>
+
+    <div 
+        *ngFor="let item of clicksArray; let i = index"
+        [ngStyle]="{backgroundColor: i >= 5? 'blue' : 'transparent'}"
+        [ngClass]="{'white-text': i >=5}"
+    >
+        {{item}}
+    </div>
+
+</div>
