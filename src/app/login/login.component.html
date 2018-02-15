@@ -1,0 +1,37 @@
+<p *ngIf="!userLoggedIn; else noUser">You are logged off. Please login.</p>
+<ng-template #noUser>
+    <p>Welcome {{ userName }}</p>
+</ng-template>
+<div class="row">
+    <div class="col-xs-6" *ngIf=!userLoggedIn>
+        <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="loginInput"
+            
+        >
+    </div>
+    <div class="col-xs-6">
+        <button 
+            class="btn btn-default"
+            [disabled]="loginInput===''"
+            *ngIf=!userLoggedIn
+            (click)="onLogin()"
+        >
+            Login
+        </button>
+        <button 
+            class="btn btn-default"
+            *ngIf=userLoggedIn
+            (click)="onLogout()"
+        >
+            Logout
+        </button>
+    </div>
+
+
+
+</div>
+
+
+
